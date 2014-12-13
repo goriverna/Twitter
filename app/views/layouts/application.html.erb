@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Twitter</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+
+
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<div class="navbar-collapse collapse" id="navbar_main">
+  <ul class="nav navbar-nav navbar-right">
+    <% if current_user %>
+        <li>Welcome, <%= current_user.name%> <%=image_tag "#{current_user.avatar}"%> <%= link_to "Sign Out", signout_path%> </li>
+    <% else %>
+        <li><%= link_to "Sign in with Twitter", "/auth/twitter"%></li>
+    <% end %>
+  </ul>
+</div>
+<%= yield %>
+
+</body>
+</html>
