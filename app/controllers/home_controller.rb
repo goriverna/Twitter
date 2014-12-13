@@ -7,11 +7,13 @@ class HomeController < ApplicationController
       config.access_token= "#{current_user.oauth_token}"
       config.access_token_secret="#{current_user.oauth_secret}"
     end
-    @friends= client.friends.take(20)
-      @friends.each do |f|
-        location=f.location
-        Friend.get_friend_data(f,location,current_user.id)
+    @friends = client.friends.to_a
+    @friends.each do |f|
+      if f.location.present?
+        location = f.location
+        Friend.get_friend_data(f,current_user.id)
       end
+    end
   end
 
 end
