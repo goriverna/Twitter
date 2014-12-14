@@ -1,9 +1,12 @@
 class Friend < ActiveRecord::Base
-  def self.get_friend_data(friend, user_id)
+  belongs_to :user
+  def self.get_friend_data(friend,location_value, user_id)
     self.where(
             name: friend.name,
             screen_name: friend.screen_name,
             location: friend.location,
-            user_id: user_id).first_or_create
+            latitude: location_value.first,
+            longitude: location_value.second,
+            user_id: user_id).find_or_create_by(user_id: user_id, screen_name: friend.screen_name)
   end
 end

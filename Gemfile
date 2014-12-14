@@ -40,8 +40,11 @@ gem 'spring',        group: :development
 
 gem 'omniauth'
 gem 'omniauth-twitter', :github => 'arunagw/omniauth-twitter'
-gem 'execjs'
+#gem 'execjs'
 gem 'twitter', :github => 'sferik/twitter'
-
-#gem 'therubyracer'
+gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
+gem 'geocoder', :git => 'git://github.com/alexreisner/geocoder.git'
+gem 'gmaps4rails'
+gem 'underscore-rails'
+gem 'therubyracer'
 

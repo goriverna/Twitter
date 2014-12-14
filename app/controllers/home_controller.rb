@@ -10,10 +10,13 @@ class HomeController < ApplicationController
     @friends = client.friends.to_a
     @friends.each do |f|
       if f.location.present?
-        location = f.location
-        Friend.get_friend_data(f,current_user.id)
+        location_value = Geocoder.coordinates("#{f.location}")
+        if location_value
+          Friend.get_friend_data(f,location_value,current_user.id)
+        end
       end
     end
+    redirect_to map_display_index_path
   end
 
 end

@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'map_display/index'
+
   get 'home/index'
 
   match "/auth/:provider/callback" =>"sessions#create",via:[:get,:post]
